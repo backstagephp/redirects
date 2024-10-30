@@ -24,11 +24,6 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package->name(static::$name)
             ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
@@ -101,8 +96,8 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament-redirects', __DIR__ . '/../resources/dist/components/filament-redirects.js'),
-            Css::make('filament-redirects-styles', __DIR__ . '/../resources/dist/filament-redirects.css'),
-            Js::make('filament-redirects-scripts', __DIR__ . '/../resources/dist/filament-redirects.js'),
+            // Css::make('filament-redirects-styles', __DIR__ . '/../resources/dist/filament-redirects.css'),
+            // Js::make('filament-redirects-scripts', __DIR__ . '/../resources/dist/filament-redirects.js'),
         ];
     }
 
@@ -146,7 +141,7 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_filament-redirects_table',
+            'add_columns_to_redirects_table_for_backstage',
         ];
     }
 }

@@ -4,17 +4,20 @@ namespace Vormkracht10\FilamentRedirects;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
 
-class FilamentRedirectsPlugin implements Plugin
+class RedirectsPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-redirects';
+        return 'redirects';
     }
 
     public function register(Panel $panel): void
     {
-        //
+        $panel->resources([
+            RedirectResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
