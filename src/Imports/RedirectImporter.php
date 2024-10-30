@@ -2,10 +2,10 @@
 
 namespace Vormkracht10\FilamentRedirects\Imports;
 
-use Vormkracht10\Redirects\Models\Redirect;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Vormkracht10\Redirects\Models\Redirect;
 
 class RedirectImporter extends Importer
 {

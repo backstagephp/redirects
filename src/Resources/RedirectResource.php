@@ -2,20 +2,20 @@
 
 namespace Vormkracht10\FilamentRedirects\Resources;
 
-use Locale;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
-use Illuminate\Support\Facades\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Vormkracht10\Backstage\Models\Site;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Support\Facades\Schema;
+use Locale;
 use Vormkracht10\Backstage\Models\Language;
-use Vormkracht10\Redirects\Models\Redirect;
+use Vormkracht10\Backstage\Models\Site;
 use Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+use Vormkracht10\Redirects\Models\Redirect;
 
 class RedirectResource extends Resource
 {
@@ -54,26 +54,26 @@ class RedirectResource extends Resource
                             ->prefixIcon('heroicon-o-link')
                             ->options(Site::orderBy('default', 'desc')->orderBy('name', 'asc')->pluck('name', 'ulid'))
                             ->default(Site::where('default', true)->first()?->ulid)
-                            ->visible(fn() => Schema::hasColumn('redirects', 'content_ulid') && Site::count() > 0)
-                            ->hidden(fn() => Schema::hasColumn('redirects', 'content_ulid') && Site::count() === 1),
+                            ->visible(fn () => Schema::hasColumn('redirects', 'content_ulid') && Site::count() > 0)
+                            ->hidden(fn () => Schema::hasColumn('redirects', 'content_ulid') && Site::count() === 1),
                         Select::make('country_code')
                             ->label(__('Country'))
                             ->columnSpan(4)
                             ->placeholder(__('Select Country'))
                             ->prefixIcon('heroicon-o-flag')
-                            ->options(Language::whereNotNull('country_code')->distinct('country_code')->get()->mapWithKeys(fn($language) => [$language->country_code => Locale::getDisplayRegion('-' . $language->country_code, app()->getLocale())])->sort())
+                            ->options(Language::whereNotNull('country_code')->distinct('country_code')->get()->mapWithKeys(fn ($language) => [$language->country_code => Locale::getDisplayRegion('-' . $language->country_code, app()->getLocale())])->sort())
                             ->default(Language::whereNotNull('country_code')->distinct('country_code')->count() === 1 ? Language::whereNotNull('country_code')->first()->country_code : null)
-                            ->visible(fn() => Schema::hasColumn('redirects', 'content_ulid') && Language::whereNotNull('country_code')->distinct('country_code')->count() > 0)
-                            ->hidden(fn() => Schema::hasColumn('redirects', 'content_ulid') && Language::whereNotNull('country_code')->distinct('country_code')->count() === 1),
+                            ->visible(fn () => Schema::hasColumn('redirects', 'content_ulid') && Language::whereNotNull('country_code')->distinct('country_code')->count() > 0)
+                            ->hidden(fn () => Schema::hasColumn('redirects', 'content_ulid') && Language::whereNotNull('country_code')->distinct('country_code')->count() === 1),
                         Select::make('language_code')
                             ->label(__('Language'))
                             ->columnSpan(4)
                             ->placeholder(__('Select Language'))
                             ->prefixIcon('heroicon-o-language')
-                            ->options(Language::get()->mapWithKeys(fn($language) => [$language->code => Locale::getDisplayLanguage($language->code, app()->getLocale())])->sort())
+                            ->options(Language::get()->mapWithKeys(fn ($language) => [$language->code => Locale::getDisplayLanguage($language->code, app()->getLocale())])->sort())
                             ->default(Language::count() === 1 ? Language::first()->code : Language::where('default', true)->first()->code)
-                            ->visible(fn() => Schema::hasColumn('redirects', 'content_ulid') && Language::count() > 0)
-                            ->hidden(fn() => Schema::hasColumn('redirects', 'content_ulid') && Language::count() === 1),
+                            ->visible(fn () => Schema::hasColumn('redirects', 'content_ulid') && Language::count() > 0)
+                            ->hidden(fn () => Schema::hasColumn('redirects', 'content_ulid') && Language::count() === 1),
                         TextInput::make('source')
                             ->label(__('Source'))
                             ->columnSpan(12)
@@ -92,7 +92,7 @@ class RedirectResource extends Resource
                             ->label(__('Type'))
                             ->columnSpan(4)
                             ->native(false)
-                            ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $type . ' (' . $code . ')'))
+                            ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $type . ' (' . $code . ')'))
                             ->searchable()
                             ->required()
                             ->default(config('redirects.default_status_code'))
@@ -104,7 +104,7 @@ class RedirectResource extends Resource
                             ->placeholder('Content')
                             ->prefixIcon('heroicon-o-link')
                             ->helperText(__('Select a content page to redirect to the current URL.'))
-                            ->visible(fn() => Schema::hasColumn('redirects', 'content_ulid')),
+                            ->visible(fn () => Schema::hasColumn('redirects', 'content_ulid')),
                         TextInput::make('destination')
                             ->label(__('Destination'))
                             ->columnSpan(12)
