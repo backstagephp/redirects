@@ -7,8 +7,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Vormkracht10\Redirects\Models\Redirect;
 use Vormkracht10\Backstage\Resources\RedirectResource\Pages;
+use Vormkracht10\Redirects\Models\Redirect;
 
 class RedirectResource extends Resource
 {
