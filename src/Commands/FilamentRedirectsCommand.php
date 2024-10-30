@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Vormkracht10\FilamentRedirects\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentRedirectsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-redirects';
 
     public $description = 'My command';
 
