@@ -4,8 +4,11 @@ namespace Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
 
 use Filament\Actions;
 use Filament\Actions\ActionGroup;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Support\Enums\ActionSize;
+use Filament\Forms\Components\Textarea;
+use Filament\Resources\Pages\ListRecords;
 use Vormkracht10\FilamentRedirects\Imports\RedirectImporter;
 use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
 
@@ -19,7 +22,36 @@ class ListRedirects extends ListRecords
             ActionGroup::make([
                 Actions\Action::make('import-paste')
                     ->label(__('Import by pasting text'))
-                    ->icon('heroicon-o-clipboard-document-list'),
+                    ->icon('heroicon-o-clipboard-document-list')
+                    ->modal()
+                    ->modalWidth('100%')
+                    ->form([
+                        Grid::make([
+                            'default' => 12,
+                        ])->schema([
+                            Select::make('code')
+                                ->label(__('Type'))
+                                ->columnSpanFull()
+                                ->native(false)
+                                ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                ->default(config('redirects.default_status_code'))
+                                ->prefixIcon('heroicon-o-map-pin')
+                                ->placeholder('HTTP status message')
+                                ->required(),
+                            Textarea::make('sources')
+                                ->label(__('Sources'))
+                                ->placeholder(__('Paste your source URLs here'))
+                                ->columnSpan(6)
+                                ->required()
+                                ->rows(30),
+                            Textarea::make('destinations')
+                                ->label(__('Destinations'))
+                                ->placeholder(__('Paste your destination URLs here'))
+                                ->columnSpan(6)
+                                ->required()
+                                ->rows(30),
+                        ]),
+                    ]),
                 Actions\ImportAction::make('import-file')
                     ->label(__('Import by file'))
                     ->icon('heroicon-o-arrow-up-on-square-stack')
