@@ -87,7 +87,7 @@ class RedirectResource extends Resource
                     ->width(0)
                     ->searchable()
                     ->sortable()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         '301' => 'info',
                         '302' => 'gray',
                         '307' => 'warning',
@@ -101,7 +101,7 @@ class RedirectResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->alignRight()
-                    ->formatStateUsing(fn(string $state): string => $state . ' ×')
+                    ->formatStateUsing(fn (string $state): string => $state . ' ×')
                     ->width(50),
                 TextColumn::make('destination')
                     ->width('50%')
