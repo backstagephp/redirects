@@ -29,7 +29,6 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
                     ->askToRunMigrations()
                     ->askToStarRepoOnGitHub('vormkracht10/filament-redirects');
             });
@@ -38,10 +37,6 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
 
         if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
             $package->hasConfigFile();
-        }
-
-        if (file_exists($package->basePath('/../database/migrations'))) {
-            $package->hasMigrations($this->getMigrations());
         }
 
         if (file_exists($package->basePath('/../resources/lang'))) {
@@ -133,15 +128,5 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
     protected function getScriptData(): array
     {
         return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getMigrations(): array
-    {
-        return [
-            'add_columns_to_redirects_table_for_backstage',
-        ];
     }
 }
