@@ -4,9 +4,8 @@ namespace Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
 
 use Filament\Actions;
 use Filament\Actions\ActionGroup;
-use Filament\Support\Colors\Color;
-use Filament\Support\Enums\ActionSize;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Support\Enums\ActionSize;
 use Vormkracht10\FilamentRedirects\Imports\RedirectImporter;
 use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
 
