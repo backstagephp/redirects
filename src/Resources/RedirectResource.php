@@ -45,11 +45,11 @@ class RedirectResource extends Resource
                     ->label(__('Type'))
                     ->columnSpanFull()
                     ->native(false)
-                    ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
+                    ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
                     ->searchable()
                     ->required()
                     ->default(config('redirects.default_status_code'))
-                    ->prefixIcon('heroicon-o-hashtag')
+                    ->prefixIcon('heroicon-o-map-pin')
                     ->placeholder('HTTP status message'),
                 TextInput::make('source')
                     ->label(__('Source'))
