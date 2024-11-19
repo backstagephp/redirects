@@ -6,9 +6,9 @@ use Filament\Actions;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
-use Filament\Support\Enums\ActionSize;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Support\Enums\ActionSize;
 use Vormkracht10\FilamentRedirects\Imports\RedirectImporter;
 use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
 
@@ -33,7 +33,7 @@ class ListRedirects extends ListRecords
                                 ->label(__('Type'))
                                 ->columnSpanFull()
                                 ->native(false)
-                                ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
                                 ->default(config('redirects.default_status_code'))
                                 ->prefixIcon('heroicon-o-map-pin')
                                 ->placeholder('HTTP status message')
