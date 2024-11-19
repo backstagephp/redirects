@@ -2,17 +2,17 @@
 
 namespace Vormkracht10\FilamentRedirects\Resources;
 
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Vormkracht10\Redirects\Models\Redirect;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+use Vormkracht10\Redirects\Models\Redirect;
 
 class RedirectResource extends Resource
 {
@@ -52,7 +52,7 @@ class RedirectResource extends Resource
                                     ->label(__('Type'))
                                     ->columnSpanFull()
                                     ->native(false)
-                                    ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                    ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
                                     ->searchable()
                                     ->required()
                                     ->default(config('redirects.default_status_code'))
