@@ -78,12 +78,29 @@ class RedirectResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('code')
+                    ->badge()
+                    ->width(0)
+                    ->searchable()
+                    ->sortable()
+                    ->color(fn(string $state): string => match ($state) {
+                        '301' => 'info',
+                        '302' => 'gray',
+                        '307' => 'warning',
+                        '308' => 'info',
+                    }),
                 TextColumn::make('source')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('destination')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('hits')
+                    ->searchable()
+                    ->sortable()
+                    ->alignRight()
+                    ->formatStateUsing(fn(string $state): string => $state . ' ×')
+                    ->width(50),
             ])
             ->filters([
                 //
