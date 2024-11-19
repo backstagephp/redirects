@@ -22,11 +22,19 @@ class RedirectResource extends Resource
 
     public static ?string $recordTitleAttribute = 'name';
 
-    protected static ?int $navigationSort = 10;
+    public static function getNavigationParentItem(): ?string
+    {
+        return config('filament-redirects.navigation.parent');
+    }
 
     public static function getNavigationGroup(): ?string
     {
-        return config('filament-redirects.navigation_group');
+        return config('filament-redirects.navigation.group');
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return config('filament-redirects.navigation.sort');
     }
 
     public static function getModelLabel(): string
@@ -51,7 +59,6 @@ class RedirectResource extends Resource
                                 Select::make('code')
                                     ->label(__('Type'))
                                     ->columnSpanFull()
-                                    ->native(false)
                                     ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
                                     ->searchable()
                                     ->required()
@@ -87,7 +94,7 @@ class RedirectResource extends Resource
                     ->width(0)
                     ->searchable()
                     ->sortable()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         '301' => 'info',
                         '302' => 'gray',
                         '307' => 'warning',
@@ -101,7 +108,7 @@ class RedirectResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->alignRight()
-                    ->formatStateUsing(fn (string $state): string => $state . ' ×')
+                    ->formatStateUsing(fn(string $state): string => $state . ' ×')
                     ->width(50),
                 TextColumn::make('destination')
                     ->width('50%')

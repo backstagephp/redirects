@@ -1,5 +1,9 @@
 <?php
 
 return [
-    'navigation_group' => 'Content',
+    'navigation' => [
+        'parent' => 'Content',
+        'group' => 'Content',
+        'sort' => -1,
+    ],
 ];
