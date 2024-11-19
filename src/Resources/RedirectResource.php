@@ -2,15 +2,17 @@
 
 namespace Vormkracht10\FilamentRedirects\Resources;
 
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs\Tab;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Vormkracht10\Redirects\Models\Redirect;
+use Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
 
 class RedirectResource extends Resource
 {
@@ -41,31 +43,38 @@ class RedirectResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('code')
-                    ->label(__('Type'))
+                Tabs::make('Tabs')
                     ->columnSpanFull()
-                    ->native(false)
-                    ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
-                    ->searchable()
-                    ->required()
-                    ->default(config('redirects.default_status_code'))
-                    ->prefixIcon('heroicon-o-map-pin')
-                    ->placeholder('HTTP status message'),
-                TextInput::make('source')
-                    ->label(__('Source'))
-                    ->url()
-                    ->columnSpanFull()
-                    ->required()
-                    ->prefixIcon('heroicon-o-arrow-uturn-right')
-                    ->placeholder(__('Type path, URL or pattern...'))
-                    ->helperText(__('The path to match, you can use regular expressions.')),
-                TextInput::make('destination')
-                    ->label(__('Destination'))
-                    ->url()
-                    ->columnSpanFull()
-                    ->required()
-                    ->prefixIcon('heroicon-o-arrow-uturn-left')
-                    ->placeholder('Type path or URL...'),
+                    ->tabs([
+                        Tab::make('Redirect')
+                            ->schema([
+                                Select::make('code')
+                                    ->label(__('Type'))
+                                    ->columnSpanFull()
+                                    ->native(false)
+                                    ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                    ->searchable()
+                                    ->required()
+                                    ->default(config('redirects.default_status_code'))
+                                    ->prefixIcon('heroicon-o-map-pin')
+                                    ->placeholder('HTTP status message'),
+                                TextInput::make('source')
+                                    ->label(__('Source'))
+                                    ->url()
+                                    ->columnSpanFull()
+                                    ->required()
+                                    ->prefixIcon('heroicon-o-arrow-uturn-right')
+                                    ->placeholder(__('Type path, URL or pattern...'))
+                                    ->helperText(__('The path to match, you can use regular expressions.')),
+                                TextInput::make('destination')
+                                    ->label(__('Destination'))
+                                    ->url()
+                                    ->columnSpanFull()
+                                    ->required()
+                                    ->prefixIcon('heroicon-o-arrow-uturn-left')
+                                    ->placeholder('Type path or URL...'),
+                            ]),
+                    ]),
             ]);
     }
 
