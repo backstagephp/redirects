@@ -2,7 +2,7 @@
 
 return [
     'navigation' => [
-        'parent' => 'Content',
+        'parent' => '',
         'group' => 'Content',
         'sort' => -1,
     ],
