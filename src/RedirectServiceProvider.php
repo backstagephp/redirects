@@ -1,26 +1,21 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects;
+namespace Backstage\Redirects\Filament;
 
-use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Vormkracht10\FilamentRedirects\Commands\FilamentRedirectsCommand;
-use Vormkracht10\FilamentRedirects\Testing\TestsFilamentRedirects;
+use Backstage\Redirects\Filament\Testing\TestsFilamentRedirects;
 
-class FilamentRedirectsServiceProvider extends PackageServiceProvider
+class RedirectServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-redirects';
+    public static string $name = 'redirects';
 
-    public static string $viewNamespace = 'filament-redirects';
+    public static string $viewNamespace = 'backstage.redirects';
 
     public function configurePackage(Package $package): void
     {
@@ -30,14 +25,12 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('vormkracht10/filament-redirects');
+                    ->askToStarRepoOnGitHub('backstagephp/redirects');
             });
 
         $configFileName = $package->shortName();
 
-        if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
-            $package->hasConfigFile();
-        }
+        $this->mergeConfigFrom(__DIR__.'/../config/backstage/redirects.php', 'backstage.redirects');
 
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
@@ -66,22 +59,13 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
         // Icon Registration
         FilamentIcon::register($this->getIcons());
 
-        // Handle Stubs
-        if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
-                $this->publishes([
-                    $file->getRealPath() => base_path("stubs/filament-redirects/{$file->getFilename()}"),
-                ], 'filament-redirects-stubs');
-            }
-        }
-
         // Testing
         Testable::mixin(new TestsFilamentRedirects);
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return 'vormkracht10/filament-redirects';
+        return 'backstagephp/redirects';
     }
 
     /**
@@ -101,9 +85,7 @@ class FilamentRedirectsServiceProvider extends PackageServiceProvider
      */
     protected function getCommands(): array
     {
-        return [
-            FilamentRedirectsCommand::class,
-        ];
+        return [];
     }
 
     /**

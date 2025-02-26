@@ -1,5 +1,5 @@
 <?php
 
-use Vormkracht10\FilamentRedirects\Tests\TestCase;
+use Backstage\Redirects\Filament\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

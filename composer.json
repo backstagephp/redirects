@@ -1,21 +1,21 @@
 {
-    "name": "vormkracht10/filament-redirects",
+    "name": "backstage/filament-redirects",
     "description": "Manage Redirects in your Laravel application through Filament.",
     "keywords": [
-        "vormkracht10",
+        "backstagephp",
         "laravel",
         "filament-redirects"
     ],
-    "homepage": "https://github.com/vormkracht10/filament-redirects",
+    "homepage": "https://github.com/backstagephp/filament-redirects",
     "support": {
-        "issues": "https://github.com/vormkracht10/filament-redirects/issues",
-        "source": "https://github.com/vormkracht10/filament-redirects"
+        "issues": "https://github.com/backstagephp/filament-redirects/issues",
+        "source": "https://github.com/backstagephp/filament-redirects"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Mark van Eijk",
-            "email": "mark@vormkracht10.nl",
+            "email": "mark@backstagephp.com",
             "role": "Developer"
         }
     ],
@@ -23,7 +23,7 @@
         "php": "^8.1",
         "filament/filament": "^3.0",
         "spatie/laravel-package-tools": "^1.15.0",
-        "vormkracht10/laravel-redirects": "@dev"
+        "backstage/laravel-redirects": "@dev"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -39,13 +39,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Vormkracht10\\FilamentRedirects\\": "src/",
-            "Vormkracht10\\FilamentRedirects\\Database\\Factories\\": "database/factories/"
+            "Backstage\\Redirects\\Filament\\": "src/",
+            "Backstage\\Redirects\\Filament\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vormkracht10\\FilamentRedirects\\Tests\\": "tests/"
+            "Backstage\\Redirects\\Filament\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -65,11 +65,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Vormkracht10\\FilamentRedirects\\FilamentRedirectsServiceProvider"
-            ],
-            "aliases": {
-                "FilamentRedirects": "Vormkracht10\\FilamentRedirects\\Facades\\FilamentRedirects"
-            }
+                "Backstage\\Redirects\\Filament\\RedirectServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

@@ -1,10 +1,10 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
+use Backstage\Redirects\Filament\FilamentRedirects\Resources\RedirectResource;
 
 class EditRedirect extends EditRecord
 {

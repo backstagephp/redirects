@@ -1,10 +1,10 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects;
+namespace Backstage\Redirects\Filament;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
+use Backstage\Redirects\Filament\Resources\RedirectResource;
 
 class RedirectsPlugin implements Plugin
 {

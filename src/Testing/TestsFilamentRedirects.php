@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects\Testing;
+namespace Backstage\Redirects\Filament\Testing;
 
 use Livewire\Features\SupportTesting\Testable;
 

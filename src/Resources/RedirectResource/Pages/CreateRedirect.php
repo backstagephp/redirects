@@ -1,9 +1,9 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Vormkracht10\FilamentRedirects\Resources\RedirectResource;
+use Backstage\Redirects\Filament\Resources\RedirectResource;
 
 class CreateRedirect extends CreateRecord
 {

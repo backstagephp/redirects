@@ -1,11 +1,11 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects\Imports;
+namespace Backstage\Redirects\Filament\Imports;
 
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
-use Vormkracht10\Redirects\Models\Redirect;
+use Backstage\Redirects\Laravel\Models\Redirect;
 
 class RedirectImporter extends Importer
 {

@@ -1,9 +1,9 @@
 # Manage Redirects in your Laravel application through Filament.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/filament-redirects.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/filament-redirects)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/filament-redirects/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vormkracht10/filament-redirects/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/filament-redirects/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vormkracht10/filament-redirects/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/filament-redirects.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/filament-redirects)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/backstage/filament-redirects.svg?style=flat-square)](https://packagist.org/packages/backstage/filament-redirects)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/backstagephp/filament-redirects/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/backstagephp/filament-redirects/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/backstagephp/filament-redirects/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/backstagephp/filament-redirects/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/backstage/filament-redirects.svg?style=flat-square)](https://packagist.org/packages/backstage/filament-redirects)
 
 
 
@@ -14,7 +14,7 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 You can install the package via composer:
 
 ```bash
-composer require vormkracht10/filament-redirects
+composer require backstage/redirects
 ```
 
 You can publish and run the migrations with:
@@ -46,8 +46,7 @@ return [
 ## Usage
 
 ```php
-$filamentRedirects = new Vormkracht10\FilamentRedirects();
-echo $filamentRedirects->echoPhrase('Hello, Vormkracht10!');
+...
 ```
 
 ## Testing

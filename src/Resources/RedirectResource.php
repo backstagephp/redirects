@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\FilamentRedirects\Resources;
+namespace Backstage\Redirects\Filament\Resources;
 
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -11,8 +11,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Vormkracht10\Redirects\Models\Redirect;
-use Vormkracht10\FilamentRedirects\Resources\RedirectResource\Pages;
+use Backstage\Redirects\Laravel\Models\Redirect;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
 class RedirectResource extends Resource
 {
