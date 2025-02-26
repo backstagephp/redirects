@@ -7,7 +7,7 @@ use Livewire\Features\SupportTesting\Testable;
 /**
  * @mixin Testable
  */
-class TestsFilamentRedirects
+class TestsRedirects
 {
     //
 }
