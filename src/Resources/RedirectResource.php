@@ -2,17 +2,17 @@
 
 namespace Backstage\Redirects\Filament\Resources;
 
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Tabs\Tab;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Backstage\Redirects\Laravel\Models\Redirect;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
+use Backstage\Redirects\Laravel\Models\Redirect;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class RedirectResource extends Resource
 {
@@ -59,7 +59,7 @@ class RedirectResource extends Resource
                                 Select::make('code')
                                     ->label(__('Type'))
                                     ->columnSpanFull()
-                                    ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                    ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
                                     ->searchable()
                                     ->required()
                                     ->default(config('redirects.default_status_code'))
@@ -94,7 +94,7 @@ class RedirectResource extends Resource
                     ->width(0)
                     ->searchable()
                     ->sortable()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         '301' => 'info',
                         '302' => 'gray',
                         '307' => 'warning',
@@ -108,7 +108,7 @@ class RedirectResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->alignRight()
-                    ->formatStateUsing(fn(string $state): string => $state . ' ×')
+                    ->formatStateUsing(fn (string $state): string => $state . ' ×')
                     ->width(50),
                 TextColumn::make('destination')
                     ->width('50%')

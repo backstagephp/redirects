@@ -2,8 +2,8 @@
 
 namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
 use Backstage\Redirects\Filament\Resources\RedirectResource;
+use Filament\Resources\Pages\CreateRecord;
 
 class CreateRedirect extends CreateRecord
 {

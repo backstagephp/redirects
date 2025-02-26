@@ -2,9 +2,9 @@
 
 namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
+use Backstage\Redirects\Filament\FilamentRedirects\Resources\RedirectResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Backstage\Redirects\Filament\FilamentRedirects\Resources\RedirectResource;
 
 class EditRedirect extends EditRecord
 {

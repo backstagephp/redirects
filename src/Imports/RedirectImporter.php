@@ -2,10 +2,10 @@
 
 namespace Backstage\Redirects\Filament\Imports;
 
+use Backstage\Redirects\Laravel\Models\Redirect;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
-use Backstage\Redirects\Laravel\Models\Redirect;
 
 class RedirectImporter extends Importer
 {
