@@ -2,6 +2,7 @@
 
 namespace Backstage\Redirects\Filament;
 
+use Backstage\Redirects\Filament\Testing\TestsFilamentRedirects;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
@@ -9,7 +10,6 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Backstage\Redirects\Filament\Testing\TestsFilamentRedirects;
 
 class RedirectServiceProvider extends PackageServiceProvider
 {
@@ -30,7 +30,7 @@ class RedirectServiceProvider extends PackageServiceProvider
 
         $configFileName = $package->shortName();
 
-        $this->mergeConfigFrom(__DIR__.'/../config/backstage/redirects.php', 'backstage.redirects');
+        $this->mergeConfigFrom(__DIR__ . '/../config/backstage/redirects.php', 'backstage.redirects');
 
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();

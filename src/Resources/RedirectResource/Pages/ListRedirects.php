@@ -2,6 +2,8 @@
 
 namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
+use Backstage\Redirects\Filament\Imports\RedirectImporter;
+use Backstage\Redirects\Filament\Resources\RedirectResource;
 use Filament\Actions;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Grid;
@@ -9,8 +11,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Support\Enums\ActionSize;
-use Backstage\Redirects\Filament\Imports\RedirectImporter;
-use Backstage\Redirects\Filament\Resources\RedirectResource;
 
 class ListRedirects extends ListRecords
 {
