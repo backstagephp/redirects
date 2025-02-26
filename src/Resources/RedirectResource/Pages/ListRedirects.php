@@ -32,7 +32,7 @@ class ListRedirects extends ListRecords
                             Select::make('code')
                                 ->label(__('Type'))
                                 ->columnSpanFull()
-                                ->options(collect(config('redirects.status_codes'))->map(fn(string $type, int $code) => $code . ' ' . $type))
+                                ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
                                 ->default(config('redirects.default_status_code'))
                                 ->prefixIcon('heroicon-o-map-pin')
                                 ->placeholder('HTTP status message')
