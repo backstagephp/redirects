@@ -1,6 +1,6 @@
 {
-    "name": "backstage/filament-redirects",
-    "description": "Manage Redirects in your Laravel application through Filament.",
+    "name": "backstage/redirects",
+    "description": "Manage Redirects in your Laravel application using Filament.",
     "keywords": [
         "backstagephp",
         "laravel",
