@@ -58,9 +58,6 @@ class RedirectServiceProvider extends PackageServiceProvider
 
         // Icon Registration
         FilamentIcon::register($this->getIcons());
-
-        // Testing
-        Testable::mixin(new TestsFilamentRedirects);
     }
 
     protected function getAssetPackageName(): ?string
