@@ -73,11 +73,8 @@
     "prefer-stable": true,
     "repositories": {
         "laravel-redirects": {
-            "type": "path",
-            "url": "/var/www/laravel-redirects",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "git@github.com:backstagephp/laravel-redirects.git"
         }
     }
 }
