@@ -2,7 +2,6 @@
 
 namespace Backstage\Redirects\Filament;
 
-use Backstage\Redirects\Filament\Resources\RedirectResource;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 

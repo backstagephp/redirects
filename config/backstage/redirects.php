@@ -10,6 +10,6 @@ return [
     ],
 
     'resources' => [
-        RedirectResource::class
-    ]
+        RedirectResource::class,
+    ],
 ];
