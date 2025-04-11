@@ -15,18 +15,16 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RedirectResource extends Resource
-{ 
+{
     public static function getModel(): string
     {
         return config('redirects.model', Redirect::class);
     }
 
-
     public static function isScopedToTenant(): bool
     {
         return config('backstage.redirects.scopesToTenant', false);
     }
-
 
     protected static ?string $navigationIcon = 'heroicon-o-arrows-right-left';
 
