@@ -15,9 +15,7 @@ class RedirectsPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources([
-            RedirectResource::class,
-        ]);
+        $panel->resources(config('backstage.redirects.resources', []));
     }
 
     public function boot(Panel $panel): void

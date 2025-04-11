@@ -30,6 +30,8 @@ class RedirectServiceProvider extends PackageServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/../config/backstage/redirects.php', 'backstage.redirects');
 
+        $package->hasConfigFile('backstage/redirects');
+
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
         }

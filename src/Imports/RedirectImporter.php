@@ -6,6 +6,7 @@ use Backstage\Redirects\Laravel\Models\Redirect;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Filament\Facades\Filament;
 
 class RedirectImporter extends Importer
 {
@@ -34,6 +35,7 @@ class RedirectImporter extends Importer
         if (isset($this->data['source'])) {
             return Redirect::firstOrNew([
                 'source' => $this->data['source'],
+                'site_id' => Filament::getTenant()->ulid,
             ]);
         }
     }
