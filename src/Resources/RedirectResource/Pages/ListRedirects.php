@@ -53,15 +53,15 @@ class ListRedirects extends ListRecords
                                 ->rows(30),
                         ]),
                     ])
-                    ->action(function($data) {
+                    ->action(function ($data) {
                         $sourceLines = preg_split('/\r\n|\r|\n/', $data['sources']);
                         $destinationLines = preg_split('/\r\n|\r|\n/', $data['destinations']);
-                        
+
                         $redirects = [];
-                        
+
                         foreach ($sourceLines as $index => $source) {
                             $destination = $destinationLines[$index] ?? null;
-                        
+
                             if ($destination !== null) {
                                 $redirects[] = [
                                     'code' => $data['code'],
