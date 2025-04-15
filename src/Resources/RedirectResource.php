@@ -40,7 +40,7 @@ class RedirectResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return config('filament-redirects.navigation.sort');
+        return config('backstage.redirects.navigation.sort');
     }
 
     public static function getModelLabel(): string
