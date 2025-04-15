@@ -35,7 +35,7 @@ class RedirectResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return config('filament-redirects.navigation.group');
+        return config('backstage.redirects.navigation.group');
     }
 
     public static function getNavigationSort(): ?int
