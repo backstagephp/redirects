@@ -48,7 +48,7 @@ class RedirectImporter extends Importer
         ]);
 
         if ($failedRowsCount = $import->getFailedRowsCount()) {
-            $body .= __(' :numbers :row failed to import.', [
+            $body .= __(':numbers :row failed to import.', [
                 'numbers' => number_format($failedRowsCount),
                 'row' => str('row')->plural($failedRowsCount),
             ]);
