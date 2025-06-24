@@ -23,7 +23,7 @@
         "php": "^8.1",
         "filament/filament": "^4.0",
         "spatie/laravel-package-tools": "^1.15.0",
-        "backstage/laravel-redirects": "@dev"
+        "backstage/laravel-redirects": "dev-main"
     },
     "require-dev": {
         "larastan/larastan": "^3.0",
