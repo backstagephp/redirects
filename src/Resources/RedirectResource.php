@@ -2,21 +2,19 @@
 
 namespace Backstage\Redirects\Filament\Resources;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\ListRedirects;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\CreateRedirect;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\EditRedirect;
-use Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\ListRedirects;
 use Backstage\Redirects\Laravel\Models\Redirect;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
