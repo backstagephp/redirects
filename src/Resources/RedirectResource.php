@@ -2,13 +2,19 @@
 
 namespace Backstage\Redirects\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\ListRedirects;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\CreateRedirect;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\EditRedirect;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 use Backstage\Redirects\Laravel\Models\Redirect;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -26,7 +32,7 @@ class RedirectResource extends Resource
         return config('backstage.redirects.scopesToTenant', false);
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrows-right-left';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-arrows-right-left';
 
     public static function getNavigationParentItem(): ?string
     {
@@ -53,10 +59,10 @@ class RedirectResource extends Resource
         return __('Redirects');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Tabs::make('Tabs')
                     ->columnSpanFull()
                     ->tabs([
@@ -124,12 +130,12 @@ class RedirectResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -144,9 +150,9 @@ class RedirectResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRedirects::route('/'),
-            'create' => Pages\CreateRedirect::route('/create'),
-            'edit' => Pages\EditRedirect::route('/{record}/edit'),
+            'index' => ListRedirects::route('/'),
+            'create' => CreateRedirect::route('/create'),
+            'edit' => EditRedirect::route('/{record}/edit'),
         ];
     }
 }
