@@ -3,7 +3,7 @@
 namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 
 use Backstage\Redirects\Filament\Resources\RedirectResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditRedirect extends EditRecord
@@ -13,7 +13,7 @@ class EditRedirect extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }
