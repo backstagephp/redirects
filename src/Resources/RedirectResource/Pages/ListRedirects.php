@@ -5,14 +5,16 @@ namespace Backstage\Redirects\Filament\Resources\RedirectResource\Pages;
 use Backstage\Redirects\Filament\Imports\RedirectImporter;
 use Backstage\Redirects\Filament\Resources\RedirectResource;
 use Backstage\Redirects\Laravel\Models\Redirect;
-use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+use Filament\Actions\CreateAction;
+use Filament\Actions\ImportAction;
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Support\Enums\ActionSize;
+use Filament\Schemas\Components\Grid;
+use Filament\Support\Enums\Size;
 
 class ListRedirects extends ListRecords
 {
@@ -22,12 +24,12 @@ class ListRedirects extends ListRecords
     {
         return [
             ActionGroup::make([
-                Actions\Action::make('import-paste')
+                Action::make('import-paste')
                     ->label(__('Import by pasting text'))
                     ->icon('heroicon-o-clipboard-document-list')
                     ->modal()
                     ->modalWidth('100%')
-                    ->form([
+                    ->schema([
                         Grid::make([
                             'default' => 12,
                         ])->schema([
@@ -81,16 +83,16 @@ class ListRedirects extends ListRecords
                             ]);
                         }
                     }),
-                Actions\ImportAction::make('import-file')
+                ImportAction::make('import-file')
                     ->label(__('Import by file'))
                     ->icon('heroicon-o-arrow-up-on-square-stack')
                     ->importer(RedirectImporter::class),
             ])->label(__('Import'))
                 ->color('gray')
                 ->icon('heroicon-o-arrow-up-tray')
-                ->size(ActionSize::Small)
+                ->size(Size::Small)
                 ->button(),
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }
