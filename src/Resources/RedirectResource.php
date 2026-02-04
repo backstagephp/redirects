@@ -90,7 +90,7 @@ class RedirectResource extends Resource
                                     ->prefixIcon('heroicon-o-arrow-uturn-left')
                                     ->placeholder('Type path or URL...')
                                     ->validationMessages([
-                                        'different' => __('Source and destination can never be the same!')
+                                        'different' => __('Source and destination can never be the same!'),
                                     ]),
                             ]),
                     ]),
