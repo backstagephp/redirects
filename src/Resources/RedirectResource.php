@@ -77,7 +77,6 @@ class RedirectResource extends Resource
                                     ->placeholder('HTTP status message'),
                                 TextInput::make('source')
                                     ->label(__('Source'))
-                                    ->url()
                                     ->columnSpanFull()
                                     ->required()
                                     ->prefixIcon('heroicon-o-arrow-uturn-right')
@@ -85,11 +84,14 @@ class RedirectResource extends Resource
                                     ->helperText(__('The path to match, you can use regular expressions.')),
                                 TextInput::make('destination')
                                     ->label(__('Destination'))
-                                    ->url()
                                     ->columnSpanFull()
                                     ->required()
+                                    ->different('source')
                                     ->prefixIcon('heroicon-o-arrow-uturn-left')
-                                    ->placeholder('Type path or URL...'),
+                                    ->placeholder('Type path or URL...')
+                                    ->validationMessages([
+                                        'different' => __('Source and destination can never be the same!')
+                                    ]),
                             ]),
                     ]),
             ]);
