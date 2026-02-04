@@ -69,7 +69,7 @@ class RedirectResource extends Resource
                                 Select::make('code')
                                     ->label(__('Type'))
                                     ->columnSpanFull()
-                                    ->options(collect(config('redirects.status_codes'))->map(fn (string $type, int $code) => $code . ' ' . $type))
+                                    ->options(collect(config('redirects.status_codes', []))->map(fn (string $type, int $code) => $code . ' ' . $type))
                                     ->searchable()
                                     ->required()
                                     ->default(config('redirects.default_status_code'))
