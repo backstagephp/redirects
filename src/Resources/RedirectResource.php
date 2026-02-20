@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 
 class RedirectResource extends Resource
 {
+    protected static ?string $tenantOwnershipRelationshipName = 'site';
+
     public static function getModel(): string
     {
         return config('redirects.model', Redirect::class);

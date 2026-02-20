@@ -41,7 +41,13 @@ class RedirectServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {
+        // Override the redirects.model config to use Backstage's extended Redirect model
+        config([
+            'redirects.model' => \Backstage\Models\Redirect::class,
+        ]);
+    }
 
     public function packageBooted(): void
     {

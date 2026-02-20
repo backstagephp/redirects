@@ -38,12 +38,22 @@ class TestCase extends Orchestra
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
-            RedirectServiceProvider::class,
+            \Backstage\Redirects\Filament\RedirectServiceProvider::class,
+            \Backstage\Redirects\Laravel\RedirectServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('redirects.model', \Backstage\Redirects\Laravel\Models\Redirect::class);
+        config()->set('redirects.default_status_code', 301);
+        config()->set('redirects.middleware', [
+            \Backstage\Redirects\Laravel\Http\Middleware\StrictRedirects::class,
+        ]);
+    }
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }

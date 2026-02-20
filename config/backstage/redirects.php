@@ -12,4 +12,6 @@ return [
     'resources' => [
         RedirectResource::class,
     ],
+
+    'scopesToTenant' => true,
 ];
