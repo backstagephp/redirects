@@ -2,6 +2,7 @@
 
 namespace Backstage\Redirects\Filament;
 
+use Backstage\Models\Redirect;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
@@ -45,7 +46,7 @@ class RedirectServiceProvider extends PackageServiceProvider
     {
         // Override the redirects.model config to use Backstage's extended Redirect model
         config([
-            'redirects.model' => \Backstage\Models\Redirect::class,
+            'redirects.model' => Redirect::class,
         ]);
     }
 
