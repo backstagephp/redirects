@@ -2,6 +2,9 @@
 
 namespace Backstage\Redirects\Filament\Tests;
 
+use Backstage\Redirects\Filament\RedirectServiceProvider;
+use Backstage\Redirects\Laravel\Http\Middleware\StrictRedirects;
+use Backstage\Redirects\Laravel\Models\Redirect;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Actions\ActionsServiceProvider;
@@ -39,11 +42,21 @@ class TestCase extends Orchestra
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             RedirectServiceProvider::class,
+            \Backstage\Redirects\Laravel\RedirectServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('redirects.model', Redirect::class);
+        config()->set('redirects.default_status_code', 301);
+        config()->set('redirects.middleware', [
+            StrictRedirects::class,
+        ]);
+    }
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }
