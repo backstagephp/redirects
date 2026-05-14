@@ -5,17 +5,11 @@ namespace Backstage\Redirects\Filament\Resources;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\CreateRedirect;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\EditRedirect;
 use Backstage\Redirects\Filament\Resources\RedirectResource\Pages\ListRedirects;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Schemas\RedirectForm;
+use Backstage\Redirects\Filament\Resources\RedirectResource\Tables\RedirectTable;
 use Backstage\Redirects\Laravel\Models\Redirect;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RedirectResource extends Resource
@@ -61,85 +55,12 @@ class RedirectResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                Tabs::make('Tabs')
-                    ->columnSpanFull()
-                    ->tabs([
-                        Tab::make('Redirect')
-                            ->schema([
-                                Select::make('code')
-                                    ->label(__('Type'))
-                                    ->columnSpanFull()
-                                    ->options(collect(config('redirects.status_codes', []))->map(fn (string $type, int $code) => $code . ' ' . $type))
-                                    ->searchable()
-                                    ->required()
-                                    ->default(config('redirects.default_status_code'))
-                                    ->prefixIcon('heroicon-o-map-pin')
-                                    ->placeholder('HTTP status message'),
-                                TextInput::make('source')
-                                    ->label(__('Source'))
-                                    ->columnSpanFull()
-                                    ->required()
-                                    ->prefixIcon('heroicon-o-arrow-uturn-right')
-                                    ->placeholder(__('Type path, URL or pattern...'))
-                                    ->helperText(__('The path to match, you can use regular expressions.')),
-                                TextInput::make('destination')
-                                    ->label(__('Destination'))
-                                    ->columnSpanFull()
-                                    ->required()
-                                    ->different('source')
-                                    ->prefixIcon('heroicon-o-arrow-uturn-left')
-                                    ->placeholder('Type path or URL...')
-                                    ->validationMessages([
-                                        'different' => __('Source and destination can never be the same!'),
-                                    ]),
-                            ]),
-                    ]),
-            ]);
+        return RedirectForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('code')
-                    ->badge()
-                    ->width(0)
-                    ->searchable()
-                    ->sortable()
-                    ->color(fn (string $state): string => match ($state) {
-                        '301' => 'info',
-                        '302' => 'gray',
-                        '307' => 'warning',
-                        '308' => 'info',
-                    }),
-                TextColumn::make('source')
-                    ->width('50%')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('hits')
-                    ->searchable()
-                    ->sortable()
-                    ->alignRight()
-                    ->formatStateUsing(fn (string $state): string => $state . ' ×')
-                    ->width(50),
-                TextColumn::make('destination')
-                    ->width('50%')
-                    ->searchable()
-                    ->sortable(),
-            ])
-            ->filters([
-                //
-            ])
-            ->recordActions([
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+        return RedirectTable::configure($table);
     }
 
     public static function getRelations(): array
